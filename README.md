@@ -28,7 +28,7 @@ $ sudo service telegraf start
 
 ### Available webhooks
 
-- [Plex](plex/)
+- [Plex](plugins/inputs/webhooks/plex/)
 
 
 ### Adding new webhooks plugin
