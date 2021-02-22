@@ -36,7 +36,7 @@ This is the plugin configuration that is expected via the `--config` param
 
 And this is an example of how to configure this with the Telegraf execd plugin that you would run with `telegraf --config telegraf.conf`
 
-```
+```toml
 [[inputs.execd]]
   ## One program to run as daemon.
   ## NOTE: process and each argument should each be their own string
