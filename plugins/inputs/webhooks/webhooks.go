@@ -17,7 +17,7 @@ type Webhook interface {
 }
 
 func init() {
-	inputs.Add("webhooks", func() telegraf.Input { return NewWebhooks() })
+	inputs.Add("external_webhooks", func() telegraf.Input { return NewWebhooks() })
 }
 
 type Webhooks struct {
@@ -85,7 +85,6 @@ func (wb *Webhooks) Start(acc telegraf.Accumulator) error {
 	ln, err := net.Listen("tcp", fmt.Sprintf("%s", wb.ServiceAddress))
 	if err != nil {
 		return fmt.Errorf("error starting server: %v", err)
-
 	}
 
 	go func() {
