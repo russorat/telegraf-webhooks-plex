@@ -1,8 +1,10 @@
-deps:
-	go mod vendor
+.DEFAULT_GOAL := build
 
 build:
 	go build -o bin/webhook-plex cmd/main.go
+
+deps:
+	go mod vendor
 
 clean:
 	rm -r bin
