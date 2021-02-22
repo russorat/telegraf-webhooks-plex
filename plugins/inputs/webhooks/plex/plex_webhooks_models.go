@@ -9,23 +9,23 @@ import (
 	"github.com/influxdata/telegraf/metric"
 )
 
-const meas = "plex_webhooks"
+const metric_name = "plex_webhooks"
 
 func NewMetric(s *plexwebhooks.Payload) (telegraf.Metric, error) {
 	t := map[string]string{
-		"is_user":                 fmt.Sprintf("%v", s.User),
-		"is_owner":                fmt.Sprintf("%v", s.Owner),
-		"server_title":            s.Server.Title,
-		"is_player_local":         fmt.Sprintf("%v", s.Player.Local),
-		"library_selection_type":  string(s.Metadata.LibrarySectionType),
-		"library_selection_title": s.Metadata.LibrarySectionTitle,
-		"media_type":              string(s.Metadata.Type),
-		"grandparent_title":       s.Metadata.GrandparentTitle,
-		"parent_title":            s.Metadata.ParentTitle,
-		"event":                   fmt.Sprintf("%v", s.Event),
-		"user_name":               s.Account.Title,
-		"player_title":            s.Player.Title,
-		"title":                   s.Metadata.Title,
+		"is_user":               fmt.Sprintf("%v", s.User),
+		"is_owner":              fmt.Sprintf("%v", s.Owner),
+		"server_title":          s.Server.Title,
+		"is_player_local":       fmt.Sprintf("%v", s.Player.Local),
+		"library_section_type":  string(s.Metadata.LibrarySectionType),
+		"library_section_title": s.Metadata.LibrarySectionTitle,
+		"media_type":            string(s.Metadata.Type),
+		"grandparent_title":     s.Metadata.GrandparentTitle,
+		"parent_title":          s.Metadata.ParentTitle,
+		"event":                 fmt.Sprintf("%v", s.Event),
+		"user_name":             s.Account.Title,
+		"player_title":          s.Player.Title,
+		"title":                 s.Metadata.Title,
 	}
 	f := map[string]interface{}{
 		"view_count": s.Metadata.ViewCount,
@@ -64,5 +64,5 @@ func NewMetric(s *plexwebhooks.Payload) (telegraf.Metric, error) {
 
 		f["rating_count"] = s.Metadata.RatingCount
 	}
-	return metric.New(meas, t, f, time.Now())
+	return metric.New(metric_name, t, f, time.Now())
 }

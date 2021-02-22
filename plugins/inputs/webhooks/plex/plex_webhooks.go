@@ -10,7 +10,7 @@ import (
 	"github.com/influxdata/telegraf"
 )
 
-const MaxMemory = 1 << 20
+const measurement = "plex_webhooks"
 
 type PlexWebhook struct {
 	Path string
@@ -62,7 +62,7 @@ func (p *PlexWebhook) eventHandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
-		p.acc.AddFields("plex_webhooks", newMetric.Fields(), newMetric.Tags(), newMetric.Time())
+		p.acc.AddFields(measurement, newMetric.Fields(), newMetric.Tags(), newMetric.Time())
 	}
 	w.WriteHeader(http.StatusOK)
 }

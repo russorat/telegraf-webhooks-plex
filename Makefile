@@ -8,7 +8,7 @@ clean:
 	rm -r bin
 
 test:
-	go test -timeout 30s ./plugins/inputs/webhooks/plex
+	go test -timeout 30s -count=1 ./plugins/inputs/webhooks/plex
 
 run:
 	./bin/webhook-plex --config plugin.conf
