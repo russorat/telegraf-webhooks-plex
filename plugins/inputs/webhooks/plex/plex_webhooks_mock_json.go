@@ -22,7 +22,7 @@ func PlexMediaPlayEventJSON() string {
 		},
 		"Metadata": {
 		   "librarySectionType": "artist",
-		   "librarySectionTitle": "something",
+		   "librarySectionTitle": "Music",
 		   "ratingKey": "1936545",
 		   "key": "/library/metadata/1936545",
 		   "parentRatingKey": "1936544",

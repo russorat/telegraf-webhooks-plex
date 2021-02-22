@@ -65,7 +65,7 @@ func TestPlexMediaPlayEvent(t *testing.T) {
 		"is_owner":              "true",
 		"is_player_local":       "true",
 		"is_user":               "true",
-		"library_section_title": "something",
+		"library_section_title": "Music",
 		"library_section_type":  "artist",
 		"media_type":            "track",
 		"parent_title":          "Stephen Stills",
