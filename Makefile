@@ -1,6 +1,14 @@
+deps:
+	go mod vendor
+
 build:
 	go build -o bin/webhook-plex cmd/main.go
 
-deploy:
+clean:
+	rm -r bin
 
-reload:
+test:
+	go test -timeout 30s ./plugins/inputs/webhooks/plex
+
+run:
+	./bin/webhook-plex --config plugin.conf
