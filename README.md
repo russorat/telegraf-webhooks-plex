@@ -1,3 +1,5 @@
+[![Go](https://github.com/russorat/telegraf-webhooks-plex/actions/workflows/go.yml/badge.svg)](https://github.com/russorat/telegraf-webhooks-plex/actions/workflows/go.yml)
+
 # Plex Webhooks Input Plugin
 
 This plugin will listen to events published from [Plex webhooks](https://support.plex.tv/articles/115002267687-webhooks/). Webhooks are a premium feature and require an active Plex Pass Subscription for the Plex Media Server account.
