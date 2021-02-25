@@ -10,7 +10,7 @@ import (
 	"github.com/influxdata/telegraf"
 )
 
-const measurement = "plex_webhooks"
+const MeasurementName = "plex"
 
 type PlexWebhook struct {
 	Path string
@@ -62,7 +62,7 @@ func (p *PlexWebhook) eventHandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
-		p.acc.AddFields(measurement, newMetric.Fields(), newMetric.Tags(), newMetric.Time())
+		p.acc.AddFields(MeasurementName, newMetric.Fields(), newMetric.Tags(), newMetric.Time())
 	}
 	w.WriteHeader(http.StatusOK)
 }
