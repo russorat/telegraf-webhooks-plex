@@ -64,54 +64,33 @@ And this is an example of how to configure this with the Telegraf execd plugin t
 
 ### Metrics
 
-Tags and fields are determined by the media type of the event (Movie, Show, or Music). All events contain the following tags and fields, additional tags and fields per type are mentioned below. 
+Tags can vary based on the Metadata Type of the event. The field is always a counter with a value of 1. If the event is a "rating" event, an additional field of "rating" is added. 
 
 - plex
   - tags:
     - is_user
     - is_owner
-    - server_title
-    - is_player_local
-    - library_section_type
-    - library_section_title
-    - media_type
-    - grandparent_title
-    - parent_title
     - event
-    - user_name
+    - server_title
+    - account_title
+    - is_player_local
     - player_title
-    - title
+    - metadata_content_rating
+    - metadata_director: Note, only the first in the list is stored
+    - metadata_grandparent_title
+    - metadata_library_section_title
+    - metadata_library_section_type
+    - metadata_original_title
+    - metadata_parent_title
+    - metadata_studio
+    - metadata_title
+    - metadata_type
+    - metadata_subtype
+    - metadata_year
+    - metadata_parent_year
   - fields:
-    - view_count (int, count)
-
-If the event is a rating event, then a `rating` field will be added of type `int`.
-
-If the event is a Movie, the following tags are included:
-
-- tags:
-  - content_rating: For example PG-13, R
-  - chapter_source
-  - genre: Note, only the first in the list is stored
-  - director: Note, only the first in the list is stored
-  - country: Note, only the first in the list is stored
-  - collection: Note, only the first in the list is stored
-  - studio
-  - year
-
-If the event is a Show, the following tags are included:
-
-- tags:
-  - content_rating: For example TV-14, TV-MA
-  - year
-  - chapter_source
-  - director: Note, only the first in the list is stored
-
-If the event is Music, the following tags and fields are included:
-
-- tags:
-  - mood
-- fields:
-  - rating_count (int, count)
+    - counter (int, count)
+    - rating (int, 1 - 10, only available if the event type is rating)
 
 ### Example Output
 

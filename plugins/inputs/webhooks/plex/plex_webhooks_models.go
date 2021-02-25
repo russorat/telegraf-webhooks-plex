@@ -2,8 +2,6 @@ package plex
 
 import (
 	"fmt"
-	"regexp"
-	"strings"
 	"time"
 
 	"github.com/hekmon/plexwebhooks"
@@ -76,32 +74,6 @@ func NewMetric(s *plexwebhooks.Payload) (telegraf.Metric, error) {
 		if s.Metadata.ParentYear != 0 {
 			t["metadata_parent_year"] = fmt.Sprintf("%v", s.Metadata.ParentYear)
 		}
-
-		// v := reflect.ValueOf(s.Metadata)
-		// typeOfS := v.Type()
-		// for i := 0; i < v.NumField(); i++ {
-		// 	var fieldType = reflect.TypeOf(v.Field(i))
-		// 	if fieldType.String() == "string" {
-		// 		if v.Field(i).Interface() != "" {
-		// 			f["metadata_"+ToSnakeCase(typeOfS.Field(i).Name)] = v.Field(i).Interface()
-		// 		}
-		// 	} else if fieldType == reflect.TypeOf([]plexwebhooks.MetadataItem{}) {
-		// 		print("something")
-		// 	}
-		// 	fmt.Printf("Field: %s\tValue: %v\tType: %v\n", typeOfS.Field(i).Name, v.Field(i).Interface(), v.Field(i).Type())
-		// }
 	}
 	return metric.New(MetricName, t, f, time.Now())
-}
-
-var matchFirstCap = regexp.MustCompile("([A-Z])([A-Z][a-z])")
-var matchAllCap = regexp.MustCompile("([a-z0-9])([A-Z])")
-
-// ToSnakeCase converts the provided string to snake_case.
-// Based on https://gist.github.com/stoewer/fbe273b711e6a06315d19552dd4d33e6
-func ToSnakeCase(input string) string {
-	output := matchFirstCap.ReplaceAllString(input, "${1}_${2}")
-	output = matchAllCap.ReplaceAllString(output, "${1}_${2}")
-	output = strings.ReplaceAll(output, "-", "_")
-	return strings.ToLower(output)
 }
