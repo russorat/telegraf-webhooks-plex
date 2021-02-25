@@ -66,7 +66,7 @@ And this is an example of how to configure this with the Telegraf execd plugin t
 
 Tags and fields are determined by the media type of the event (Movie, Show, or Music). All events contain the following tags and fields, additional tags and fields per type are mentioned below. 
 
-- plex_webhooks
+- plex
   - tags:
     - is_user
     - is_owner
@@ -116,10 +116,10 @@ If the event is Music, the following tags and fields are included:
 ### Example Output
 
 ```
-plex_webhooks,content_rating=Passed,country=USA,director=Phil\ Karlson,event=media.play,genre=Crime,is_owner=true,is_player_local=true,is_user=true,library_section_title=Movies,library_section_type=movie,media_type=movie,player_title=Chrome,server_title=BigSur,studio=Columbia\ Pictures,title=Scandal\ Sheet,user_name=russorat,year=1952 view_count=1i 1614017055347830000
-plex_webhooks,content_rating=Passed,country=USA,director=Phil\ Karlson,event=media.stop,genre=Crime,is_owner=true,is_player_local=true,is_user=true,library_section_title=Movies,library_section_type=movie,media_type=movie,player_title=Chrome,server_title=BigSur,studio=Columbia\ Pictures,title=Scandal\ Sheet,user_name=russorat,year=1952 view_count=1i 1614017062286684000
-plex_webhooks,content_rating=Passed,country=USA,director=Phil\ Karlson,event=media.rate,genre=Crime,is_owner=true,is_player_local=true,is_user=true,library_section_title=Movies,library_section_type=movie,media_type=movie,player_title=Chrome,server_title=BigSur,studio=Columbia\ Pictures,title=Scandal\ Sheet,user_name=russorat,year=1952 view_count=1i,rating=4i 1614017071892773000
-plex_webhooks,content_rating=Passed,country=USA,director=Phil\ Karlson,event=media.rate,genre=Crime,is_owner=true,is_player_local=true,is_user=true,library_section_title=Movies,library_section_type=movie,media_type=movie,player_title=Chrome,server_title=BigSur,studio=Columbia\ Pictures,title=Scandal\ Sheet,user_name=russorat,year=1952 view_count=1i,rating=10i 1614017073035550000
-plex_webhooks,content_rating=TV-14,event=media.play,grandparent_title=Saturday\ Night\ Live,is_owner=true,is_player_local=true,is_user=true,library_section_title=TV\ Shows,library_section_type=show,media_type=episode,parent_title=Season\ 46,player_title=Chrome,server_title=BigSur,title=Kristen\ Wiig\ /\ Dua\ Lipa,user_name=russorat,year=2020 view_count=0i 1614017148410286000
-plex_webhooks,content_rating=TV-14,event=media.stop,grandparent_title=Saturday\ Night\ Live,is_owner=true,is_player_local=true,is_user=true,library_section_title=TV\ Shows,library_section_type=show,media_type=episode,parent_title=Season\ 46,player_title=Chrome,server_title=BigSur,title=Kristen\ Wiig\ /\ Dua\ Lipa,user_name=russorat,year=2020 view_count=0i 1614017155183018000
+plex,content_rating=Passed,country=USA,director=Phil\ Karlson,event=media.play,genre=Crime,is_owner=true,is_player_local=true,is_user=true,library_section_title=Movies,library_section_type=movie,media_type=movie,player_title=Chrome,server_title=BigSur,studio=Columbia\ Pictures,title=Scandal\ Sheet,user_name=russorat,year=1952 view_count=1i 1614017055347830000
+plex,content_rating=Passed,country=USA,director=Phil\ Karlson,event=media.stop,genre=Crime,is_owner=true,is_player_local=true,is_user=true,library_section_title=Movies,library_section_type=movie,media_type=movie,player_title=Chrome,server_title=BigSur,studio=Columbia\ Pictures,title=Scandal\ Sheet,user_name=russorat,year=1952 view_count=1i 1614017062286684000
+plex,content_rating=Passed,country=USA,director=Phil\ Karlson,event=media.rate,genre=Crime,is_owner=true,is_player_local=true,is_user=true,library_section_title=Movies,library_section_type=movie,media_type=movie,player_title=Chrome,server_title=BigSur,studio=Columbia\ Pictures,title=Scandal\ Sheet,user_name=russorat,year=1952 view_count=1i,rating=4i 1614017071892773000
+plex,content_rating=Passed,country=USA,director=Phil\ Karlson,event=media.rate,genre=Crime,is_owner=true,is_player_local=true,is_user=true,library_section_title=Movies,library_section_type=movie,media_type=movie,player_title=Chrome,server_title=BigSur,studio=Columbia\ Pictures,title=Scandal\ Sheet,user_name=russorat,year=1952 view_count=1i,rating=10i 1614017073035550000
+plex,content_rating=TV-14,event=media.play,grandparent_title=Saturday\ Night\ Live,is_owner=true,is_player_local=true,is_user=true,library_section_title=TV\ Shows,library_section_type=show,media_type=episode,parent_title=Season\ 46,player_title=Chrome,server_title=BigSur,title=Kristen\ Wiig\ /\ Dua\ Lipa,user_name=russorat,year=2020 view_count=0i 1614017148410286000
+plex,content_rating=TV-14,event=media.stop,grandparent_title=Saturday\ Night\ Live,is_owner=true,is_player_local=true,is_user=true,library_section_title=TV\ Shows,library_section_type=show,media_type=episode,parent_title=Season\ 46,player_title=Chrome,server_title=BigSur,title=Kristen\ Wiig\ /\ Dua\ Lipa,user_name=russorat,year=2020 view_count=0i 1614017155183018000
 ```
