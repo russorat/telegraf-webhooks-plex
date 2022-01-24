@@ -76,7 +76,7 @@ Tags can vary based on the Metadata Type of the event. The field is always a cou
     - is_player_local
     - player_title
     - metadata_content_rating
-    - metadata_director: Note, only the first in the list is stored
+    - metadata_director: Note, only the first director in the list is stored
     - metadata_grandparent_title
     - metadata_library_section_title
     - metadata_library_section_type
