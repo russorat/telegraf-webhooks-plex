@@ -59,19 +59,17 @@ func TestPlexMediaPlayEvent(t *testing.T) {
 	require.Equal(t, http.StatusOK, resp.Code)
 
 	expectedTags := map[string]string{
-		"account_title":                  "elan",
-		"event":                          "media.play",
-		"is_owner":                       "true",
-		"is_player_local":                "true",
-		"is_user":                        "true",
-		"metadata_grandparent_title":     "Stephen Stills",
-		"metadata_library_section_title": "Music",
-		"metadata_library_section_type":  "artist",
-		"metadata_parent_title":          "Stephen Stills",
-		"metadata_title":                 "Love The One You're With",
-		"metadata_type":                  "track",
-		"player_title":                   "Plex Web (Safari)",
-		"server_title":                   "Office",
+		"account_title":              "elan",
+		"event":                      "media.play",
+		"is_owner":                   "true",
+		"is_player_local":            "true",
+		"is_user":                    "true",
+		"metadata_grandparent_title": "Stephen Stills",
+		"metadata_parent_title":      "Stephen Stills",
+		"metadata_title":             "Love The One You're With",
+		"metadata_type":              "track",
+		"player_title":               "Plex Web (Safari)",
+		"server_title":               "Office",
 	}
 	expectedFields := map[string]interface{}{
 		"counter": int64(1),
@@ -230,10 +228,41 @@ func TestPlexMediaMusicEvent(t *testing.T) {
 		"metadata_library_section_title": "Music",
 		"metadata_library_section_type":  "artist",
 		"metadata_original_title":        "Britney Spears",
-		"metadata_parent_title":          "RTL: I Like the 90’s",
+		"metadata_parent_title":          "RTL: I Like the 90's",
 		"metadata_parent_year":           "2014",
 		"metadata_title":                 "Oops!…I Did It Again (album version)",
 		"metadata_type":                  "track",
+		"player_title":                   "Chrome",
+		"server_title":                   "Office",
+	}
+	expectedFields := map[string]interface{}{
+		"counter": int64(1),
+	}
+	acc.AssertContainsTaggedFields(t, "plex", expectedFields, expectedTags)
+}
+
+// TestPlexMediaStopEventWithArrayMetadata tests that the webhook can handle
+// metadata fields that are arrays (which is the issue with newer Plex versions)
+func TestPlexMediaStopEventWithArrayMetadata(t *testing.T) {
+	var acc testutil.Accumulator
+	p := &PlexWebhook{Path: "/plex", acc: &acc}
+	resp := postWebhooks(p, MediaStopEventJSON())
+	require.Equal(t, http.StatusOK, resp.Code)
+
+	expectedTags := map[string]string{
+		"account_title":                  "username",
+		"event":                          "media.stop",
+		"is_owner":                       "true",
+		"is_player_local":                "true",
+		"is_user":                        "true",
+		"metadata_content_rating":        "R",
+		"metadata_director":              "Gore Verbinski",
+		"metadata_library_section_title": "Movies",
+		"metadata_library_section_type":  "movie",
+		"metadata_studio":                "20th Century Fox",
+		"metadata_title":                 "EVO",
+		"metadata_type":                  "movie",
+		"metadata_year":                  "2017",
 		"player_title":                   "Chrome",
 		"server_title":                   "Office",
 	}
